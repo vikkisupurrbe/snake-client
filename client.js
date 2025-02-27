@@ -8,8 +8,18 @@ const connect = function () {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-  conn.on("data", () => {console.log("you ded cuz you idled");})
+
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server!");
+    conn.write("Name: NHK");
+  })
+  
+  conn.on("data", () => {
+    console.log("you ded cuz you idled");
+  });
+
   return conn;
+  
 };
 
 module.exports = connect;
